@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000/api'||process.env.REACT_APP_API_URL ;
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
 
 // Create axios instance
 const api = axios.create({
@@ -52,7 +52,7 @@ export const getPatientProfile = async () => {
 
 // Doctor Authentication
 export const doctorSignup = async (formData) => {
-  const response = await axios.post(`${API_URL}/auth/doctor/signup`, formData, {
+  const response = await api.post(`${API_URL}/auth/doctor/signup`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }

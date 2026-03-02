@@ -2,9 +2,6 @@ const Patient = require('../models/Patient');
 const { generateToken } = require('../utils/jwtUtils');
 const { sendPatientRegistrationEmail } = require('../services/emailService');
 
-// @desc    Register new patient
-// @route   POST /api/auth/patient/signup
-// @access  Public
 exports.registerPatient = async (req, res, next) => {
   try {
     const {
@@ -101,9 +98,6 @@ exports.registerPatient = async (req, res, next) => {
   }
 };
 
-// @desc    Login patient
-// @route   POST /api/auth/patient/signin
-// @access  Public
 exports.loginPatient = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -154,9 +148,6 @@ exports.loginPatient = async (req, res, next) => {
   }
 };
 
-// @desc    Get patient dashboard data
-// @route   GET /api/patient/dashboard
-// @access  Private (Patient only)
 exports.getPatientDashboard = async (req, res, next) => {
   try {
     const patient = await Patient.findById(req.user._id)
